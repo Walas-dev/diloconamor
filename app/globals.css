@@ -8,6 +8,7 @@
   --tertiary: #D8BFD8;
   --neutral: #4a4a4a;
   --rosa: #e8a0b2;
+  --title: #b12f58;
   --maron: #7b5e5b
 }
 
@@ -20,6 +21,7 @@
   --color-neutral: var(--neutral);
   --color-rosa: var(--rosa);
   --color-maron: var(--maron);
+  --color-title: var(--title);
   --font-sans: var(--font-montserrat), sans-serif;
   --font-serif: var(--font-playfair), serif;
   --font-script: var(--font-caveat), cursive;

@@ -12,10 +12,13 @@ const Ubicacion = () => {
     const lngMargarita = -64.1000;
     
     return (
-        <section className='py-16 px-4 md:px-8 w-full mx-auto'>
+        <section className='w-full mx-auto px-4 md:px-8 lg:px-12 xl:px-16 pb-12 md:pb-16 lg:pb-20'>
             <div className="mb-8 md:mb-12">
-                <h3 className='text-maron font-serif font-bold text-4xl md:text-5xl mb-3'>
-                    Estamos donde tú estás
+                <h3 className="text-4xl md:text-5xl lg:text-6xl text-gray-900 font-medium font-serif leading-tight mb-4">
+                    Estamos{' '}
+                    <span className="text-maron font-script font-bold text-5xl md:text-6xl lg:text-7xl">
+                        donde tú estás
+                    </span>
                 </h3>
                 <p className='text-gray-600 font-sans text-lg max-w-2xl leading-relaxed'>
                     Llevamos alegría y detalles a mano a cada rincón de nuestra hermosa Isla de Margarita.

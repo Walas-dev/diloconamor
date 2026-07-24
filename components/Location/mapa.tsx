@@ -39,7 +39,7 @@ const Mapa = ({ lat, lng, zoomMobile = 9.5, zoomDesktop = 10.5 }: MapaProps) => 
     const tileAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
     return (
-        <section className="relative w-full h-100 lg:h-full min-h-100">
+        <section className="relative w-full h-100 lg:h-full min-h-100 ">
             <MapContainer
                 center={posicion}
                 zoom={zoom}
@@ -52,7 +52,7 @@ const Mapa = ({ lat, lng, zoomMobile = 9.5, zoomDesktop = 10.5 }: MapaProps) => 
                     url={tileUrl}
                 />    
             </MapContainer>
-            <div className="absolute bottom-4 left-4 right-4 md:right-auto z-1000">
+            <div className="absolute bottom-4 left-4 right-4 md:right-auto z-20">
                 <div className="flex items-start gap-4 p-5 bg-white/95 backdrop-blur-sm shadow-xl rounded-4xl md:rounded-[2.5rem] w-full max-w-sm border border-gray-100">
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 

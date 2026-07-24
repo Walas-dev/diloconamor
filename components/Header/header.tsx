@@ -1,53 +1,95 @@
-import Image from 'next/image'
-import React from 'react'
-import Button from '../Ui/Button'
+'use client';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import Button from '../Ui/Button';
 
-const nav = [
-  {id:1, name:'inicio', ref:'',p:''},
-  {id:2, name:'servicios', ref:'',p:''},
-  {id:3, name:'ubicación', ref:'',p:''},
-  {id:4, name:'contacto', ref:'',p:''},
-]
-
-function Header () {
-  return (
-    <section className='flex p-2 px-12 w-full justify-center'>
-        <header className='flex p-1 rounded-full justify-between bg-white w-full max-w-8xl'>
-            <div className='flex gap-3 items-center text-primary'>
-              <Image
-                  src="/logo.png"
-                  alt="logo"
-                  width={60}
-                  height={60}
-                  priority
-                />
-                <h3 className='text-2xl font-bold'>Dilo con amor</h3>
-            </div>
-            <nav className='lg:flex gap-8 items-center hidden'>
-              {nav.map((n)=>(
-                <div key={n.id} className=' cursor-pointer text-primary/25 hover:text-primary transition-colors duration-300'>
-                  <h3>{n.name}</h3>
-                </div>
-              ))}
-            </nav>
-            <Button
-              url='#'
-              variant={'primary'}
-              name='WhatsApp'
-              
-            >
-              <svg 
-                  className="text-white/50 group-hover:text-white transition-colors duration-300 w-6 h-6"
-                  viewBox="0 0 512 512"
-                  >
-                  <path  fill="currentColor" d='M380.9 97.1c-41.9-42-97.7-65.1-157-65.1-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480 117.7 449.1c32.4 17.7 68.9 27 106.1 27l.1 0c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zM325.1 300.5c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6z'/>
-              </svg>
-              <h3>WhatsApp</h3>
-
-            </Button>
-        </header>
-    </section>
-  )
+interface NavItem {
+  id: number;
+  name: string;
+  ref: string;
 }
 
-export default Header
+const nav: NavItem[] = [
+  { id: 1, name: 'inicio', ref: '/' },
+  { id: 2, name: 'servicios', ref: '/servicios' },
+  { id: 3, name: 'ubicación', ref: '/ubicacion' },
+  { id: 4, name: 'contacto', ref: '/contacto' },
+];
+
+export default function Header() {
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="fixed top-0 left-0 w-full z-50 flex justify-between pt-6 pb-2 px-4 pointer-events-none">
+      <header 
+        className={`
+          pointer-events-auto relative grid items-center justify-between bg-white/95 backdrop-blur-md 
+          rounded-full shadow-md border border-gray-100 transition-all duration-500 ease-in-out
+          ${isScrolled ? ' w-max min-w-[320px] md:min-w-60' : ' w-max min-w-[320px] md:min-w-60'}
+        `}
+      >  
+        <nav className="flex items-center">
+          {nav.map((n) => {
+            const isActive = pathname === n.ref;
+            return (
+              <a 
+                key={n.id} 
+                href={n.ref}
+                aria-current={isActive ? 'page' : undefined}
+                className={`
+                  flex gap-3 items-center justify-center text-center font-medium transition-all duration-300 
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-300 rounded-full px-4 md:px-8 py-4
+                  ${isActive ? 'text-white font-bold bg-primary/90' : 'text-pink-300 hover:text-pink-500 hover:bg-primary/20'}
+                `}
+              >
+                {n.name}
+              </a>
+            );
+          })}
+        </nav>
+      </header>
+      <div className={`transition-all duration-300 ${isScrolled ? 'max-h-0 opacity-0 scale-95 pointer-events-non' : 'max-h-50 opacity-100 scale-100'}`}>
+        <Button url='' name='whastApp' variant='primary'>
+          <h3>WhastApp</h3>
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+
+/**
+ *  <div 
+          className={`
+            absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+            transition-all duration-500 ease-in-out
+            ${isScrolled ? 'w-14 h-14' : 'w-24 h-24'}
+          `}
+        >
+          <div className="relative w-full h-full bg-white rounded-full p-1 shadow-lg border border-pink-100 overflow-hidden flex items-center justify-center">
+            <Image
+              src="/logo.png"
+              alt="Logo principal"
+              fill
+              priority
+              className={`
+                object-cover transition-transform duration-500 ease-in-out
+                ${isScrolled ? 'scale-[1.8]' : 'scale-100'}
+              `}
+            />
+          </div>
+        </div>
+ * 
+ */

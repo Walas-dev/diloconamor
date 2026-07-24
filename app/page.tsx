@@ -6,9 +6,9 @@ import Footer from "@/components/Footer/footer"
 import Hero from "@/components/Hero/hero";
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-white/95">
+    <div className="flex flex-col min-h-screen bg-white/95">
       <Header/>
-      <main className="flex flex-1 w-full flex-col items-center justify-between sm:items-start px-16">
+      <main className="flex flex-1 w-full flex-col items-center justify-between sm:items-start">
         <Hero/>
         <Structure/>
         <Ubicacion/>

@@ -32,7 +32,7 @@ const card = [
 
 const Structure = () => {
   return (
-    <section className="flex flex-col md:flex-row gap-6 md:gap-8 w-full max-w-6xl mx-auto py-16 px-4 md:px-8">
+    <section className="flex flex-col md:flex-row gap-6 md:gap-8 w-full mx-auto px-4 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16 lg:py-20">
         {card.map((c)=>(
             <div 
                 key={c.id} 
