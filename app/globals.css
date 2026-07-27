@@ -9,7 +9,13 @@
   --neutral: #4a4a4a;
   --rosa: #e8a0b2;
   --title: #b12f58;
-  --maron: #7b5e5b
+  --maron: #7b5e5b;
+  --cream: #FBF3EC;
+  --ink: #4A342E;
+  --rose: #E8607D;
+  --lavender: #C9AEE0;
+  --sky: #8FD0E0;
+  --butter: #F5CE6B;
 }
 
 @theme inline {
@@ -25,6 +31,13 @@
   --font-sans: var(--font-montserrat), sans-serif;
   --font-serif: var(--font-playfair), serif;
   --font-script: var(--font-caveat), cursive;
+
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-rose: var(--rose);
+  --color-lavender: var(--lavender);
+  --color-sky: var(--sky);
+  --color-butter: var(--butter);
 }
 
 @media (prefers-color-scheme: dark) {

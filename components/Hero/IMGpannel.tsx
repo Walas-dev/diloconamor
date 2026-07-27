@@ -1,56 +1,26 @@
 import Image from 'next/image'
 
-interface IMGProps {
-    src: string;
-    alt: string;
-    className: string; 
-}
-
-const IMG = ({ src, alt, className }: IMGProps) => {
-    return (
-        <div className={`overflow-hidden shadow-lg transition-transform duration-500 hover:scale-[1.02] ${className}`}>
-            <Image
-                src={src} 
-                alt={alt}
-                fill
-                priority
-                className='object-cover' 
-            />
-        </div>
-    )
-}
-
 const IMGpannel = () => {
-  return (
-    <section className='w-full h-full flex flex-col xl:flex-row gap-4 xl:gap-6 xl:h-[80vh]'>
-        
-        <div className="absolute inset-0 bg-white/70 xl:hidden z-10 backdrop-blur-[2px]" />
+    return (
+        <section className="relative w-full flex justify-center xl:h-[75vh] xl:pr-5">
 
-        <IMG 
-            src='/image 1.png'
-            alt='Arreglo floral principal'
-            className='absolute inset-0 z-0 xl:relative w-full h-full xl:w-1/2 xl:h-full xl:rounded-none xl:rounded-l-[15rem] xl:rounded-r-3xl'
-        />
+            <div className="relative w-[85%] sm:w-[70%] xl:w-full max-w-md xl:max-w-none rotate-2 xl:rotate-0">
 
-        
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-7 bg-butter/70 -rotate-3 shadow-sm z-20" />
 
-        <div className='w-full xl:w-1/2 flex-col gap-4 xl:gap-6 xl:h-full hidden xl:flex relative z-20'>
-            
-            <IMG 
-                src='/image 1.png'
-                alt='Detalle floral superior'
-                className='relative w-full h-1/2 rounded-none rounded-tr-[10rem] rounded-tl-3xl rounded-b-3xl'
-            />
+                <div className="relative bg-white p-3 pb-6 rounded-sm shadow-xl">
+                    <div className="relative w-full aspect-4/5 xl:aspect-auto xl:h-[65vh] overflow-hidden rounded-sm">
+                        <Image src="/image 1.png" alt="Detalle floral" fill priority className="object-cover" />
+                    </div>
+                </div>
 
-            <IMG 
-                src='/image 1.png'
-                alt='Detalle floral inferior'
-                className='relative w-full h-1/2 rounded-none rounded-br-[10rem] rounded-t-3xl rounded-bl-3xl'
-            />
-
-        </div>
-    </section>
-  )
+                {/* sello / logo */}
+                <div className="absolute -bottom-6 -left-6 xl:-left-10 h-24 w-24 xl:h-36 xl:w-36 rounded-full ring-4 ring-white overflow-hidden shadow-lg -rotate-6 bg-white">
+                    <Image src="/logo.png" alt="Dilo con amor" fill className="object-cover" />
+                </div>
+            </div>
+        </section>
+    )
 }
 
 export default IMGpannel

@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display, Caveat, Montserrat } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display, Caveat, Montserrat, Baloo_2, Quicksand  } from "next/font/google";
 import "./globals.css";
+
+
+
+const baloo = Baloo_2({
+  subsets: ['latin'], 
+  variable: '--font-display',
+  weight: ['600','700','800'
+]})
+
+const quicksand = Quicksand({
+  subsets: ['latin'], 
+  variable: '--font-body',
+  weight: ['400','500','600'
+]})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,7 +59,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${fontSerif.variable} ${fontScript.variable} ${fontSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className={`min-h-full flex flex-col ${baloo.variable} ${quicksand.variable}`}>{children}</body>
     </html>
   );
 }

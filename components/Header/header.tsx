@@ -32,7 +32,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 flex justify-between pt-6 pb-2 px-4 pointer-events-none">
+    <div className="fixed top-0 left-0 w-full z-50 flex justify-between pt-3 pb-2 px-4 pointer-events-none">
       <header 
         className={`
           pointer-events-auto relative grid items-center justify-between bg-white/95 backdrop-blur-md 
