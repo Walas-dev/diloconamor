@@ -4,7 +4,6 @@ import Button from '../Ui/Button';
 interface EnlaceContacto {
     id: number;
     name: string;
-    bgClass: string;
     subtitle: string;
     url: string;
     icon: React.ReactNode;
@@ -23,59 +22,45 @@ const IconInstagram = () => (
 );
 
 const enlaces: EnlaceContacto[] = [
-    {
-        id: 1, 
-        name: 'Conectar vía WhatsApp', 
-        bgClass: 'bg-primary/50', 
-        subtitle: 'Escríbenos', 
-        url: '',
-        icon: <IconWhatsApp />
-    },
-    {
-        id: 2, 
-        name: '@diloconamor_mgta', 
-        bgClass: 'bg-secondary/50',
-        subtitle: 'Síguenos', 
-        url: 'https://www.instagram.com/diloconamor_mgta', 
-        icon: <IconInstagram />
-    }
+    { id: 1, name: 'Conectar vía WhatsApp', subtitle: 'Escríbenos', url: '', icon: <IconWhatsApp /> },
+    { id: 2, name: '@diloconamor_mgta', subtitle: 'Síguenos', url: 'https://www.instagram.com/diloconamor_mgta', icon: <IconInstagram /> }
 ];
 
 const Contenido = () => {
   return (
     <div className='relative flex flex-col justify-center items-start pl-14 md:pl-24 lg:pl-40 pr-6 w-full lg:w-1/2 h-full z-10'>
-        
+
         <div className='absolute left-2 md:left-6 lg:left-8 top-0 h-full flex items-center select-none'>
-            <h3 className='uppercase text-lg md:text-2xl lg:text-3xl 2xl:text-4xl font-serif text-black/10 [writing-mode:vertical-lr] tracking-[0.3em] md:tracking-[0.35em] whitespace-nowrap'>
+            <h3 className='uppercase text-lg md:text-2xl lg:text-3xl 2xl:text-4xl font-display text-ink/10 [writing-mode:vertical-lr] tracking-[0.3em] md:tracking-[0.35em] whitespace-nowrap'>
                 Hecho En Isla de Margarita
             </h3>
         </div>
-        
-        <h2 className='text-5xl md:text-6xl lg:text-[6rem] text-gray-900 font-medium flex flex-col font-serif leading-[0.85] mb-2'>
-            Hablemos 
-            <span className='text-maron font-script font-bold text-7xl md:text-8xl lg:text-[8rem] -rotate-2'> 
+
+        <h2 className='text-5xl md:text-6xl lg:text-[6rem] text-ink font-extrabold flex flex-col font-display leading-[0.85] mb-2'>
+            Hablemos
+            <span className='text-rose font-script font-bold text-7xl md:text-8xl lg:text-[8rem] -rotate-2'>
                 con amor
             </span>
         </h2>
-        <p className='text-gray-600 max-w-sm md:max-w-md lg:max-w-lg text-base md:text-lg leading-relaxed py-5'>
+        <p className='text-ink/70 font-body max-w-sm md:max-w-md lg:max-w-lg text-base md:text-lg leading-relaxed py-5'>
             Creemos en la magia de las palabras y los detalles. Cuéntanos qué historia quieres contar hoy y le daremos forma con amor y dedicación.
         </p>
-        
+
         <div className="flex flex-col w-full max-w-sm">
             {enlaces.map((e) => (
-                <div key={e.id} className={`flex flex-col items-start justify-center py-4 w-full ${e.id === 1 ? 'border-b border-gray-200/60' : ''}`}>
+                <div key={e.id} className={`flex flex-col items-start justify-center py-4 w-full ${e.id === 1 ? 'border-b border-ink/10' : ''}`}>
                     <Button name={e.name} url={e.url} variant='none'>
                         <div className="flex items-center gap-4 text-left group cursor-pointer w-full">
-                            
-                            <div className={`rounded-full p-3 border transition-colors duration-300 ${e.id === 1 ? 'bg-rosa/40 border-transparent text-maron' : 'border-maron/30 text-gray-400 group-hover:border-maron/80 group-hover:text-maron'} ${e.bgClass}`}>
+
+                            <div className={`rounded-full p-3 border transition-colors duration-300 ${e.id === 1 ? 'bg-rose/15 border-transparent text-rose' : 'border-ink/15 text-ink/40 group-hover:border-sky/60 group-hover:text-sky'}`}>
                                 {e.icon}
                             </div>
 
                             <div className="flex flex-col justify-center">
-                                <h4 className='text-[0.65rem] lg:text-xs font-bold text-teal-600/80 uppercase mb-0.5 tracking-wider'>
+                                <h4 className='text-[0.65rem] lg:text-xs font-display font-bold text-rose uppercase mb-0.5 tracking-wider'>
                                     {e.subtitle}
                                 </h4>
-                                <p className='text-maron/80 group-hover:text-maron font-semibold text-lg lg:text-xl leading-tight transition-colors'>
+                                <p className='text-ink/80 group-hover:text-rose font-display font-semibold text-lg lg:text-xl leading-tight transition-colors'>
                                     {e.name}
                                 </p>
                             </div>
