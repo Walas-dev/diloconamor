@@ -4,92 +4,89 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Button from '../Ui/Button';
 
-interface NavItem {
-  id: number;
-  name: string;
-  ref: string;
-}
+interface NavItem { id: number; name: string; ref: string; }
 
 const nav: NavItem[] = [
-  { id: 1, name: 'inicio', ref: '/' },
-  { id: 2, name: 'servicios', ref: '/servicios' },
-  { id: 3, name: 'ubicación', ref: '/ubicacion' },
-  { id: 4, name: 'contacto', ref: '/contacto' },
+  { id: 1, name: 'inicio', ref: '#' },
+  { id: 2, name: 'servicios', ref: '#servicios' },
+  { id: 3, name: 'ubicación', ref: '#ubicacion' },
+  { id: 4, name: 'contacto', ref: '#contacto' },
 ];
 
 export default function Header() {
-
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+
   return (
-    <div className="fixed top-0 left-0 w-full z-50 flex justify-between pt-3 pb-2 px-4 pointer-events-none">
-      <header 
-        className={`
-          pointer-events-auto relative grid items-center justify-between bg-white/95 backdrop-blur-md 
-          rounded-full shadow-md border border-gray-100 transition-all duration-500 ease-in-out
-          ${isScrolled ? ' w-max min-w-[320px] md:min-w-60' : ' w-max min-w-[320px] md:min-w-60'}
-        `}
-      >  
-        <nav className="flex items-center">
-          {nav.map((n) => {
+    <div className="fixed top-0 left-0 w-full z-50 px-4 pt-3 pb-2 pointer-events-none animate-fade-down">
+      <div className="flex justify-between items-center gap-3">
+
+        {/* Desktop / tablet */}
+        <header className="pointer-events-auto hidden md:grid relative items-center bg-white/95 backdrop-blur-md rounded-full shadow-md border border-gray-100 transition-all duration-500 ease-in-out w-max min-w-60">
+          <nav className="flex items-center">
+            {nav.map((n) => {
+              const isActive = pathname === n.ref;
+              return (
+                <a key={n.id} href={n.ref} aria-current={isActive ? 'page' : undefined}
+                  className={`flex gap-3 items-center justify-center text-center font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-300 rounded-full px-4 md:px-8 py-4 ${isActive ? 'text-white font-bold bg-primary/90' : 'text-pink-300 hover:text-pink-500 hover:bg-primary/20'}`}>
+                  {n.name}
+                </a>
+              );
+            })}
+          </nav>
+        </header>
+
+        <div className="pointer-events-auto md:hidden flex items-center gap-2 bg-white/95 backdrop-blur-md rounded-full shadow-md border border-gray-100 pl-2 pr-2 py-2">
+          <div className="relative h-9 w-9 rounded-full overflow-hidden ring-2 ring-white shadow-sm shrink-0">
+            <Image src="/logo.png" alt="Dilo con amor" fill className="object-cover" />
+          </div>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            className="relative h-9 w-9 rounded-full bg-rose/15 flex items-center justify-center"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5 text-rose" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path className={`origin-center transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-1.5' : ''}`} d="M4 7 Q8 5 12 7 T20 7" />
+              <path className={`transition-all duration-300 ${menuOpen ? 'opacity-0' : 'opacity-100'}`} d="M4 12 Q8 10 12 12 T20 12" />
+              <path className={`origin-center transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} d="M4 17 Q8 15 12 17 T20 17" />
+            </svg>
+          </button>
+        </div>
+
+        <div className={`pointer-events-auto transition-all duration-300 ${isScrolled ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'}`}>
+          <Button url="" name="whatsapp" variant="primary">WhatsApp</Button>
+        </div>
+      </div>
+
+      <div className={`pointer-events-auto md:hidden overflow-hidden transition-all duration-400 ease-out ${menuOpen ? 'max-h-80 opacity-100 mt-3' : 'max-h-0 opacity-0 mt-0'}`}>
+        <nav className="flex flex-col bg-white/95 backdrop-blur-md rounded-3xl shadow-md border border-gray-100">
+          {nav.map((n, i) => {
             const isActive = pathname === n.ref;
             return (
-              <a 
-                key={n.id} 
+              <a
+                key={n.id}
                 href={n.ref}
-                aria-current={isActive ? 'page' : undefined}
-                className={`
-                  flex gap-3 items-center justify-center text-center font-medium transition-all duration-300 
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-300 rounded-full px-4 md:px-8 py-4
-                  ${isActive ? 'text-white font-bold bg-primary/90' : 'text-pink-300 hover:text-pink-500 hover:bg-primary/20'}
-                `}
+                style={{ transitionDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
+                className={`px-4 py-3 rounded-3xl font-medium text-center transition-all duration-300 ${menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'} ${isActive ? 'bg-primary/90 text-white font-bold' : 'text-ink hover:bg-primary/10'}`}
               >
                 {n.name}
               </a>
             );
           })}
+          
         </nav>
-      </header>
-      <div className={`transition-all duration-300 ${isScrolled ? 'max-h-0 opacity-0 scale-95 pointer-events-non' : 'max-h-50 opacity-100 scale-100'}`}>
-        <Button url='' name='whastApp' variant='primary'>
-          <h3>WhastApp</h3>
-        </Button>
       </div>
     </div>
   );
 }
-
-
-/**
- *  <div 
-          className={`
-            absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
-            transition-all duration-500 ease-in-out
-            ${isScrolled ? 'w-14 h-14' : 'w-24 h-24'}
-          `}
-        >
-          <div className="relative w-full h-full bg-white rounded-full p-1 shadow-lg border border-pink-100 overflow-hidden flex items-center justify-center">
-            <Image
-              src="/logo.png"
-              alt="Logo principal"
-              fill
-              priority
-              className={`
-                object-cover transition-transform duration-500 ease-in-out
-                ${isScrolled ? 'scale-[1.8]' : 'scale-100'}
-              `}
-            />
-          </div>
-        </div>
- * 
- */
