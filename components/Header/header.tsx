@@ -13,6 +13,35 @@ const nav: NavItem[] = [
   { id: 4, name: 'contacto', ref: '#contacto' },
 ];
 
+const Nav = (pathname, menuOpen) => {
+  return (
+    <nav className="flex lg:items-center lg:flex-row flex-col bg-white/95 backdrop-blur-md rounded-3xl shadow-md border border-gray-100">
+      {nav.map((n,i) => {
+        const isActive = pathname === n.ref;
+        return (
+          <a 
+            key={n.id}
+            href={n.ref}
+            style={{ transitionDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
+            aria-current={isActive ? 'page' : undefined}
+            className={`
+             px-4 py-3 rounded-3xl font-medium text-center transition-all duration-300 ${menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'} ${isActive ? 'bg-primary/90 text-white font-bold' : 'text-ink hover:bg-primary/10'}
+             [flex gap-3 items-center justify-center text-center font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-300 rounded-full px-4 md:px-8 py-4]
+             ${isActive ? 'text-white font-bold bg-primary/90' : 'text-pink-300 hover:text-pink-500 hover:bg-primary/20'}
+             
+             `}>
+            {n.name}
+          </a>
+        );
+      })}
+    </nav>
+  )
+
+}
+
+
+
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,7 +59,6 @@ export default function Header() {
     <div className="fixed top-0 left-0 w-full z-50 px-4 pt-3 pb-2 pointer-events-none animate-fade-down">
       <div className="flex justify-between items-center gap-3">
 
-        {/* Desktop / tablet */}
         <header className="pointer-events-auto hidden md:grid relative items-center bg-white/95 backdrop-blur-md rounded-full shadow-md border border-gray-100 transition-all duration-500 ease-in-out w-max min-w-60">
           <nav className="flex items-center">
             {nav.map((n) => {
@@ -50,18 +78,24 @@ export default function Header() {
             <Image src="/logo.png" alt="Dilo con amor" fill className="object-cover" />
           </div>
           <button
-            type="button"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-expanded={menuOpen}
-            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
-            className="relative h-9 w-9 rounded-full bg-rose/15 flex items-center justify-center"
-          >
-            <svg viewBox="0 0 24 24" className="h-5 w-5 text-rose" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path className={`origin-center transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-1.5' : ''}`} d="M4 7 Q8 5 12 7 T20 7" />
-              <path className={`transition-all duration-300 ${menuOpen ? 'opacity-0' : 'opacity-100'}`} d="M4 12 Q8 10 12 12 T20 12" />
-              <path className={`origin-center transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} d="M4 17 Q8 15 12 17 T20 17" />
-            </svg>
-          </button>
+                type='button'
+                onClick={() => setMenuOpen((v) => !v)}
+                aria-expanded={menuOpen}
+                aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+                className='relative h-9 w-9 rounded-full bg-rose/15 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-300'
+                >
+                <span className={`absolute w-1/2 h-0.5 bg-rose rounded-full transition-all duration-300 ease-in-out ${
+                    menuOpen ? 'rotate-45 translate-y-0' : '-translate-y-1.5'
+                }`} />
+                
+                <span className={`absolute w-1/2 h-0.5 bg-rose rounded-full transition-all duration-300 ease-in-out ${
+                    menuOpen ? 'opacity-0 -translate-x-4' : 'opacity-100 translate-x-0'
+                }`} />
+                
+                <span className={`absolute w-1/2 h-0.5 bg-rose rounded-full transition-all duration-300 ease-in-out ${
+                    menuOpen ? '-rotate-45 translate-y-0' : 'translate-y-1.5'
+                }`} />
+            </button>
         </div>
 
         <div className={`pointer-events-auto transition-all duration-300 ${isScrolled ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'}`}>
@@ -86,7 +120,30 @@ export default function Header() {
           })}
           
         </nav>
+        
       </div>
     </div>
+
+    
   );
 }
+
+/**
+ * <nav className="flex flex-col bg-white/95 backdrop-blur-md rounded-3xl shadow-md border border-gray-100">
+          {nav.map((n, i) => {
+            const isActive = pathname === n.ref;
+            return (
+              <a
+                key={n.id}
+                href={n.ref}
+                style={{ transitionDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
+                className={`px-4 py-3 rounded-3xl font-medium text-center transition-all duration-300 ${menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'} ${isActive ? 'bg-primary/90 text-white font-bold' : 'text-ink hover:bg-primary/10'}`}
+              >
+                {n.name}
+              </a>
+            );
+          })}
+          
+        </nav>
+ * 
+ */

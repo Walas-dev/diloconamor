@@ -11,7 +11,7 @@ const Redes = () => {
         </p>
       </div>
 
-      <ul className="flex gap-3">
+      <ul className="flex gap-3 justify-center">
         {redes.map((r) => (
           <Lista key={r.id} id={r.id} name={r.name} ref={r.ref} p={r.p} />
         ))}
