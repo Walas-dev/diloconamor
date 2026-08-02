@@ -13,35 +13,6 @@ const nav: NavItem[] = [
   { id: 4, name: 'contacto', ref: '#contacto' },
 ];
 
-const Nav = (pathname, menuOpen) => {
-  return (
-    <nav className="flex lg:items-center lg:flex-row flex-col bg-white/95 backdrop-blur-md rounded-3xl shadow-md border border-gray-100">
-      {nav.map((n,i) => {
-        const isActive = pathname === n.ref;
-        return (
-          <a 
-            key={n.id}
-            href={n.ref}
-            style={{ transitionDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
-            aria-current={isActive ? 'page' : undefined}
-            className={`
-             px-4 py-3 rounded-3xl font-medium text-center transition-all duration-300 ${menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'} ${isActive ? 'bg-primary/90 text-white font-bold' : 'text-ink hover:bg-primary/10'}
-             [flex gap-3 items-center justify-center text-center font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-300 rounded-full px-4 md:px-8 py-4]
-             ${isActive ? 'text-white font-bold bg-primary/90' : 'text-pink-300 hover:text-pink-500 hover:bg-primary/20'}
-             
-             `}>
-            {n.name}
-          </a>
-        );
-      })}
-    </nav>
-  )
-
-}
-
-
-
-
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
