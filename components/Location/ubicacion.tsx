@@ -12,7 +12,7 @@ const Ubicacion = () => {
     const lngMargarita = -64.1000;
 
     return (
-        <section className='flex flex-col w-full gap-3 mx-auto px-4 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16 lg:py-20 bg-cream'>
+        <section id="ubicacion" className=' scroll-mt-3 flex flex-col w-full gap-3 mx-auto px-4 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16 lg:py-20 bg-cream'>
             <div className="mb-3 md:mb-6 text-center md:text-left">
                
                 <h3 className="text-4xl md:text-5xl lg:text-6xl text-ink font-extrabold font-display leading-tight mb-4">

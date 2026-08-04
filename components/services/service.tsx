@@ -51,9 +51,8 @@ const PhotoStack = ({ images }: { images: string[] }) => {
             nextId.current += 1
 
             setStack((prev) => [newItem, ...prev])
-            setEnteringId(id) // nace fuera de posición, abajo
+            setEnteringId(id)
 
-            // en el siguiente frame la soltamos para que transicione hacia su lugar en la pila
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => setEnteringId(null))
             })
@@ -78,7 +77,7 @@ const PhotoStack = ({ images }: { images: string[] }) => {
                 return (
                     <div
                         key={item.id}
-                        className="absolute inset-4 md:inset-6 rounded-3xl overflow-hidden border-4 border-white shadow-xl transition-all duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
+                        className="absolute inset-4 md:inset-3 rounded-3xl overflow-hidden border-4 border-white shadow-xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                         style={{
                             zIndex: STACK_SIZE - pos,
                             transform: `translateY(${translateY}px) scale(${scale}) rotate(${rotate}deg)`,
@@ -94,7 +93,7 @@ const PhotoStack = ({ images }: { images: string[] }) => {
 }
 const Services = () => {
   return (
-    <section className="relative w-full px-4 md:px-8 lg:px-12 xl:px-16 py-16 md:py-14 overflow-hidden bg-cream">
+    <section id="servicios" className="scroll-mt-6 relative w-full px-4 md:px-8 lg:px-12 xl:px-16 py-16 md:py-14 overflow-hidden bg-cream">
 
       <ServicesBackdrop />
 

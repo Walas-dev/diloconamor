@@ -57,7 +57,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${fontSerif.variable} ${fontScript.variable} ${fontSans.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fontSerif.variable} ${fontScript.variable} ${fontSans.variable} h-full antialiased scroll-smooth`}
     >
       <body className={`min-h-full flex flex-col ${baloo.variable} ${quicksand.variable}`}>{children}</body>
     </html>

@@ -6,7 +6,7 @@ import HeroBackdrop from './heroBackdrop'
 
 const Hero = () => {
     return (
-        <section className="relative flex flex-col xl:grid xl:grid-cols-2 items-center justify-center xl:justify-between w-full min-h-fit xl:min-h-screen overflow-hidden bg-cream px-4 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16 lg:py-17 gap-8 xl:gap-0">
+        <section id='inicio' className="scroll-mt-24 relative flex flex-col xl:grid xl:grid-cols-2 items-center justify-center xl:justify-between w-full min-h-fit xl:min-h-screen overflow-hidden bg-cream px-4 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16 lg:py-17 gap-8 xl:gap-0">
 
             <HeroBackdrop />
 
