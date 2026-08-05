@@ -14,7 +14,6 @@ const IMGpannel = () => {
                     </div>
                 </div>
 
-                {/* sello / logo */}
                 <div className="absolute -bottom-6 -left-6 xl:-left-10 h-24 w-24 xl:h-36 xl:w-36 rounded-full ring-4 ring-white overflow-hidden shadow-lg -rotate-6 bg-white">
                     <Image src="/logo.png" alt="Dilo con amor" fill className="object-cover" />
                 </div>

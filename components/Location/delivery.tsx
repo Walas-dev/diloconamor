@@ -1,16 +1,4 @@
-import React from 'react'
-
-const cob = [
-  { municipio: 'Maneiro', puntos: 'Pampatar, Playa el Ángel, Jorge Coll', color: 'rose' as const },
-  { municipio: 'Mariño', puntos: 'Porlamar, Av. 4 de Mayo, Santiago Mariño', color: 'sky' as const },
-  { municipio: 'Díaz y García', puntos: 'Villa Rosa, El Valle, San Juan (Consultar)', color: 'butter' as const },
-]
-
-const dotColor: Record<'rose' | 'sky' | 'butter', string> = {
-  rose: 'bg-rose',
-  sky: 'bg-sky',
-  butter: 'bg-butter',
-}
+import { cob, dotColor } from '@/ts/location'
 
 const Delivery = () => {
   return (

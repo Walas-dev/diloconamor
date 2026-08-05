@@ -2,6 +2,7 @@
 import CardMap from './cardMap'
 import dynamic from "next/dynamic";
 import Delivery from './delivery';
+
 const Mapa = dynamic(() => import("./mapa"), {
   ssr: false,
   loading: () => <div className="h-100 w-full flex items-center justify-center bg-gray-100 rounded-2xl animate-pulse text-gray-500">Cargando mapa...</div>,

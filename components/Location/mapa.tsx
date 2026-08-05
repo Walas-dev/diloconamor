@@ -2,13 +2,7 @@
 import { useState, useEffect } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-
-interface MapaProps {
-  lat: number;
-  lng: number;
-  zoomMobile?: number;
-  zoomDesktop?: number;
-}
+import { MapaProps } from "@/ts/location";
 
 const Mapa = ({ lat, lng, zoomMobile = 9.5, zoomDesktop = 10.5 }: MapaProps) => {
     const [zoom, setZoom] = useState<number | null>(null);

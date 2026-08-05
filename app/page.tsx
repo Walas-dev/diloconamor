@@ -1,6 +1,6 @@
 import Header from "@/components/Header/header";
 import Structure from "@/components/structure/structure";
-import Ubicacion from "@/components/Location/ubicacion";
+import Ubicacion from "@/components/Location/location";
 import Contacto from "@/components/Contact/contact";
 import Footer from "@/components/Footer/footer"
 import Hero from "@/components/Hero/hero";
