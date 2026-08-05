@@ -11,7 +11,9 @@ const Delivery = () => {
         {cob.map((c, index) => (
           <div key={index} className="flex flex-col items-center text-center gap-2 p-4">
             <span className={`h-2.5 w-2.5 rounded-full ${dotColor[c.color]}`} />
-            <h5 className="font-body text-xs text-ink/50 uppercase tracking-wide">Zona {index + 1}</h5>
+            <h5 className="font-body text-xs text-ink/50 uppercase tracking-wide">
+              {c.municipio === 'Otros municipios' ? 'Otras Zonas' : `Zona ${index + 1}`}
+            </h5>
             <h4 className="font-display font-bold text-lg text-ink">{c.municipio}</h4>
             <p className="font-body text-sm text-rose/70 leading-relaxed">{c.puntos}</p>
           </div>

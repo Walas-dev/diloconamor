@@ -10,9 +10,9 @@ export const horarios = [
 ]
 
 export const cob = [
-  { municipio: 'Maneiro', puntos: 'Pampatar, Playa el Ángel, Jorge Coll', color: 'rose' as const },
-  { municipio: 'Mariño', puntos: 'Porlamar, Av. 4 de Mayo, Santiago Mariño', color: 'sky' as const },
-  { municipio: 'Díaz y García', puntos: 'Villa Rosa, El Valle, San Juan (Consultar)', color: 'butter' as const },
+  { municipio: 'Maneiro', puntos: 'Pampatar, Playa el Ángel, Jorge Coll, Paraiso I y 2, Los Robles', color: 'rose' as const },
+  { municipio: 'Mariño', puntos: 'Porlamar, Av. 4 de Mayo, Santiago Mariño, Sabanamar y Costa Azul', color: 'sky' as const },
+  { municipio: 'Otros municipios', puntos: 'Consultar disponibilidad y tarifa de entrega', color: 'butter' as const }
 ]
 
 export const dotColor: Record<'rose' | 'sky' | 'butter', string> = {

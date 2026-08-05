@@ -10,5 +10,5 @@ export const whatsappLinks = {
 export const instragramLink='https://www.instagram.com/diloconamor_mgta'
 
 
-export const SITE_URL = 'https://diloconamor.com'
+export const SITE_URL = 'https://diloconamor.netlify.app'
 export const SHARE_TEXT = 'Regalos y detalles hechos a mano, con cariño 💛'

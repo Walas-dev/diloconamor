@@ -70,7 +70,7 @@ export default function Header() {
 
         <div className="pointer-events-auto lg:hidden flex items-center gap-2 bg-white backdrop-blur-md rounded-full shadow-md border border-gray-100 pl-2 pr-2 py-2">
           <div className="relative h-9 w-9 rounded-full overflow-hidden ring-2 ring-white shadow-sm shrink-0">
-            <Image src="/logo.png" alt="Dilo con amor" fill className="object-cover" />
+            <Image src="/logo.png" alt="Dilo con amor" fill className="object-cover" sizes="36px" priority />
           </div>
           <button
             type='button'

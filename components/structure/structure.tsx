@@ -9,7 +9,7 @@ const Structure = () => {
                 Nuestro compromiso
             </span>
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-ink text-balance px-4">
-                Por qué elegir <span className="font-script text-primary text-4xl sm:text-5xl">Dilo con amor</span>
+                Por qué elegir <span className="font-script text-primary text-4xl sm:text-5xl">Dilo con amor ?</span>
             </h2>
         </div>
 

@@ -10,12 +10,12 @@ const IMGpannel = () => {
 
                 <div className="relative bg-white p-3 pb-6 rounded-sm shadow-xl">
                     <div className="relative w-full aspect-4/5 xl:aspect-auto xl:h-[65vh] overflow-hidden rounded-sm">
-                        <Image src="/image 1.png" alt="Detalle floral" fill priority className="object-cover" />
+                        <Image src="/image 1.png" alt="Detalle floral" fill priority className="object-cover" sizes="(max-width: 1280px) 85vw, 50vw" />
                     </div>
                 </div>
 
                 <div className="absolute -bottom-6 -left-6 xl:-left-10 h-24 w-24 xl:h-36 xl:w-36 rounded-full ring-4 ring-white overflow-hidden shadow-lg -rotate-6 bg-white">
-                    <Image src="/logo.png" alt="Dilo con amor" fill className="object-cover" />
+                    <Image src="/logo.png" alt="Dilo con amor" fill className="object-cover" sizes="(max-width: 1280px) 96px, 144px"/>
                 </div>
             </div>
         </section>

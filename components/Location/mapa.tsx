@@ -64,7 +64,7 @@ const Mapa = ({ lat, lng, zoomMobile = 9.5, zoomDesktop = 10.5 }: MapaProps) => 
                     <div className="flex flex-col gap-1">
                         <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-900">Isla de Margarita</h3> 
                         <p className="text-sm md:text-base text-gray-600 leading-snug">
-                            Cobertura total en los municipios Maneiro, Mariño y Arismendi.
+                            Cobertura total en los municipios Maneiro, Mariño.
                         </p>
                     </div>
                 </div>
